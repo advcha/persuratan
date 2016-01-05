@@ -1,0 +1,23 @@
+<div>
+	<div class="modal-header">
+		<h3 class="modal-title">{{ title_surat }} Kode Masalah</h3>
+	</div>
+	<div class="modal-body">
+		<form id="formKodeMasalah" name="formKodeMasalah" role="form" novalidate>
+			<div class="form-group" show-errors>
+				<label for="kodemasalah">Kode Masalah</label>
+				<input type="text" class="form-control" id="kodemasalah" name="kodemasalah" required placeholder="Jenis Surat" ng-model="data_kodemasalah.kodemasalah" maxlength="10" />
+				<span class="help-block" ng-if="formKodeMasalah.kodemasalah.$error.required">Kode masalah harus diisi</span>
+			</div>
+			<div class="form-group" show-errors>
+				<label for="keterangan">Keterangan</label>
+				<input type="text" class="form-control" id="keterangan" name="keterangan" required placeholder="Keterangan" ng-model="data_kodemasalah.keterangan"/>
+				<span class="help-block" ng-if="formKodeMasalah.keterangan.$error.required">Keterangan harus diisi</span>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-success" ng-click="save()">Simpan</button>
+		<button class="btn btn-warning" ng-click="$close()">Batal</button>
+	</div>
+</div>

@@ -1,0 +1,61 @@
+<section class="container grid-form" ng-init="init()">
+	<h3 class="title_grid">LAPORAN</h3>
+	<section id="laporan" class="col-md-offset-4" style="margin-top:25px;">
+		<form id="formLaporan" name="formLaporan" role="form" novalidate>
+			<div class="form-group row">
+				<label class="col-sm-3 form-control-label" for="jenislaporan">Jenis Laporan : </label>
+				<div class="col-sm-3">
+					<select class="form-control" id="jenislaporan" name="jenislaporan" required ng-model="data_laporan.jenislaporan">
+						<option value="surat_masuk">Surat Masuk</option>
+						<option value="surat_keluar">Surat Keluar</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-3 form-control-label" for="periode">Periode Laporan : </label>
+				<div class="col-sm-5">
+					<input type="radio" name="periode_bulanan" ng-model="data_laporan.periode" value="bulanan">Bulanan<br/>
+					<input type="radio" name="periode_tanggal" ng-model="data_laporan.periode" value="tanggal">Tanggal<br/><br/>					
+					<span class="show_err" ng-show="!data_laporan.periode && print_isclicked">Pilih Periode Bulanan atau tanggal!</span>
+					<div ng-if="show_bulan">Pilih Bulan:<datepicker ng-model="data_laporan.bulan" min-mode="month" datepicker-mode="'month'"></datepicker><span class="show_err" ng-show="data_laporan.periode=='bulanan' && print_isclicked && !data_laporan.bulan">Pilih Bulan!</span></div>
+					<div ng-if="show_tanggal">
+						<div class="form-group row">
+							<label class="col-sm-5 form-control-label" for="tgl_from" style="padding-right:0;padding-top:8px;">Tanggal Awal:</label>
+							<div class="col-sm-4" style="padding:0">
+								<input type="text" class="form-control" datepicker-popup="dd-MM-yyyy" is-open="$parent.tglFromIsOpen" ng-click="tglFromDatePickerOpen($event)" datepicker-options="dateOptions" ng-model="data_laporan.tgl_from" ng-required="true"/>
+							</div>
+							<div class="col-sm-2" style="padding:0">
+								<span class="input-group-btn">
+								  <button type="button" class="btn btn-default" 
+										  ng-click="tglFromDatePickerOpen($event)">
+									<i class="glyphicon glyphicon-calendar"></i>
+								  </button>
+								</span>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-5 form-control-label" for="tgl_to" style="padding-right:0;padding-top:8px;">Tanggal Akhir:</label>
+							<div class="col-sm-4" style="padding:0">
+								<input type="text" class="form-control" datepicker-popup="dd-MM-yyyy" is-open="$parent.tglToIsOpen" ng-click="tglToDatePickerOpen($event)" datepicker-options="dateOptions" ng-model="data_laporan.tgl_to" ng-required="true"/>
+							</div>
+							<div class="col-sm-2" style="padding:0">
+								<span class="input-group-btn">
+								  <button type="button" class="btn btn-default" 
+										  ng-click="tglToDatePickerOpen($event)">
+									<i class="glyphicon glyphicon-calendar"></i>
+								  </button>
+								</span>
+							</div>
+						</div>
+						<span class="show_err" ng-show="data_laporan.periode=='tanggal' && print_isclicked && (!data_laporan.tgl_from || !data_laporan.tgl_to)">Pilih Tanggal Awal dan Tanggal Akhir!</span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-2 col-sm-offset-2">
+					<button type="submit" name="go" data-ng-click="print()" class="btn btn-primary btn-block">Print</button>
+				</div>
+			</div>
+		</form>
+	</section>
+</section>

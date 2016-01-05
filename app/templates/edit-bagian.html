@@ -1,0 +1,28 @@
+<div>
+	<div class="modal-header">
+		<h3 class="modal-title">{{ title_surat }} Bagian</h3>
+	</div>
+	<div class="modal-body">
+		<form id="formBagian" name="formBagian" role="form" novalidate>
+			<div class="form-group" show-errors>
+				<label for="bagian">Nama Bagian</label>
+				<input type="text" class="form-control" id="bagian" name="bagian" required placeholder="Nama Bagian" ng-model="data_bagian.bagian" maxlength="50" />
+				<span class="help-block" ng-if="formBagian.bagian.$error.required">Nama bagian harus diisi</span>
+			</div>
+			<div class="form-group" show-errors>
+				<label for="singkatan">Singkatan</label>
+				<input type="text" class="form-control" id="singkatan" name="singkatan" required placeholder="Singkatan" ng-model="data_bagian.singkatan" maxlength="15"/>
+				<span class="help-block" ng-if="formBagian.singkatan.$error.required">Singkatan harus diisi</span>
+			</div>
+			<div class="form-group" show-errors>
+				<label for="kodettd">Kode Tanda Tangan</label>
+				<input type="text" class="form-control" id="kodettd" name="kodettd" required placeholder="Kode Tanda Tangan" ng-model="data_bagian.kodettd" maxlength="15"/>
+				<span class="help-block" ng-if="formBagian.kodettd.$error.required">Kode tanda tangan harus diisi</span>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-success" ng-click="save()">Simpan</button>
+		<button class="btn btn-warning" ng-click="$close()">Batal</button>
+	</div>
+</div>

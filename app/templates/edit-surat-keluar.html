@@ -1,0 +1,104 @@
+<div>
+	<div class="modal-header">
+		<h3 class="modal-title">{{ title_surat }} Surat Keluar</h3>
+	</div>
+	<div class="modal-body">
+		<form id="formSuratKeluar" name="formSuratKeluar" method="post" enctype="multipart/form-data" role="form" novalidate>
+			<div class="form-group" id="no_urut">
+				<label for="no_index">Nomor Surat</label>
+				<div class="col-md-12" style="padding:0 0 15px 0;">
+					<div class="form-inline">
+						<div class="form-group" id="jenissurat_error" show-errors>
+							<select class="form-control" id="idjenissurat" name="idjenissurat" required ng-model="data_suratkeluar.idjenissurat" ng-change="getLastNo(data_suratkeluar.idjenissurat)">
+								<option ng-repeat="js in jenissurat" value="{{js.idjenissurat}}">{{js.singkatan}}</option>
+							</select> - 
+						</div>
+						<div class="form-group" id="no_index_error" style="width:20%;" show-errors>
+							<input type="text" class="form-control" id="no_index" name="no_index" required placeholder="" ng-model="data_suratkeluar.no_index" maxlength="10" style="width:90%;" /> /
+						</div>
+						<div class="form-group" id="bagian_error" show-errors>
+							<select class="form-control" id="idbagian" name="idbagian" required ng-model="data_suratkeluar.idbagian">
+								<option ng-repeat="b in bagian" value="{{b.idbagian}}">{{b.kodettd}}</option>
+							</select> / 
+						</div>
+						<div class="form-group" id="kode_error" show-errors>
+							<select class="form-control" id="idkode" name="idkode" required ng-model="data_suratkeluar.idkode">
+								<option ng-repeat="k in kodemasalah" value="{{k.idkode}}">{{k.kodemasalah}}</option>
+							</select> / 
+						</div>
+						<div class="form-group" id="bulan_error" show-errors>
+							<select class="form-control" id="idbulan" name="idbulan" required ng-model="data_suratkeluar.idbulan">
+								<option ng-repeat="bln in bulan" value="{{bln}}">{{bln}}</option>
+							</select> / 
+						</div>
+						<div class="form-group" id="tahun_error" show-errors>
+							<select class="form-control" id="idtahun" name="idtahun" required ng-model="data_suratkeluar.idtahun" ng-change="getLastNo(data_suratkeluar.idjenissurat)">
+								<option ng-repeat="thn in tahun" value="{{thn}}">{{thn}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<span class="help-block" ng-if="formSuratKeluar.idjenissurat.$error.required" id="show_err_jenissurat">Pilih jenis surat</span>
+				<span class="help-block" ng-if="formSuratKeluar.no_index.$error.required" id="show_err_no_index">No index harus diisi</span>
+				<span class="help-block" ng-if="formSuratKeluar.no_index.$error.wrong">No urut {{data_suratkeluar.no_index}} sudah ada!</span>
+				<span class="help-block" ng-if="formSuratKeluar.no_index.$error.zero">No urut ini tidak dibolehkan!</span>
+				<span class="help-block" ng-if="formSuratKeluar.idbagian.$error.required" id="show_err_bagian">Pilih Kode Tandatangan</span>
+				<span class="help-block" ng-if="formSuratKeluar.idkode.$error.required" id="show_err_kode">Pilih Kode Masalah</span>
+				<span class="help-block" ng-if="formSuratKeluar.idbulan.$error.required" id="show_err_bulan">Pilih Bulan</span>
+				<span class="help-block" ng-if="formSuratKeluar.idtahun.$error.required" id="show_err_tahun">Pilih Tahun</span>
+			</div>
+			<!--div class="col-md-6 form-group" style="padding:0 10px 0 0;">
+				<label for="no_surat">Nomor Surat</label>
+				<input type="text" class="form-control" id="no_surat" placeholder="no_surat" required ng-model="data_suratkeluar.no_surat" maxlength="20"/>
+				<span class="help-block" ng-if="formSuratKeluar.no_surat.$error.required">Nomor surat harus diisi</span>
+			</div-->
+			<div class="col-md-6 form-group" style="padding:0 10px 0 0;">
+				<label for="tgl_surat">Tanggal Surat</label>
+				<input type="date" class="form-control" id="tgl_surat" placeholder="Tanggal surat" ng-model="data_suratkeluar.tgl_surat" />
+			</div>
+			<div class="col-md-6 form-group" style="padding:0;">
+				<label for="penandatangan">Penandatangan</label>
+				<select class="form-control" id="idpenandatangan" name="idpenandatangan" required ng-model="data_suratkeluar.idpenandatangan">
+					<option ng-repeat="p in penandatangan" value="{{p.idbagian}}">{{p.bagian}}</option>
+				</select>
+			</div>
+			<div class="col-md-6 form-group" style="padding:0 10px 0 0;">
+				<label for="dari">Dari</label>
+				<input type="text" class="form-control" id="dari" placeholder="dari" required ng-model="data_suratkeluar.dari" maxlength="150"/>
+			</div>
+			<div class="col-md-6 form-group" style="padding:0;">
+				<label for="tujuan">Tujuan</label>
+				<input type="text" class="form-control" id="tujuan" placeholder="tujuan" required ng-model="data_suratkeluar.tujuan" maxlength="150"/>
+			</div>
+			<div class="form-group">
+				<label for="perihal">Perihal</label>
+				<textarea class="form-control" rows="2" id="perihal" placeholder="perihal" required ng-model="data_suratkeluar.perihal"></textarea>
+			</div>
+			<div class="col-md-6 form-group" style="padding:0 10px 0 0;">
+				<label for="lampiran">Lampiran</label>
+				<input type="text" class="form-control" id="lampiran" placeholder="lampiran" ng-model="data_suratkeluar.lampiran" maxlength="20"/>
+			</div>
+			<div class="col-md-6 form-group" style="padding:0;">
+				<label for="file_document">Upload Dokumen</label>
+				<input type="file" class="form-control" id="file_document" ngf-select ng-model="data_suratkeluar.file_document" name="file_document" ngf-multiple="true" ngf-pattern="'image/*,application/pdf'" ngf-max-size="20MB"/>
+				<span ng-show="formSuratKeluar.file_document.$error.maxSize">Ukuran file terlalu besar 
+          {{data_suratkeluar.file_document.size / 1000000|number:1}}MB: max 20M</span>
+				<button ng-click="data_suratkeluar.file_document = null" ng-show="data_suratkeluar.file_document">Hapus</button>
+				<span class="edit" ng-show="data_suratkeluar.file_document_edit.length">
+					<span ng-repeat="e in data_suratkeluar.file_document_edit" class="post-tag .rendered-element" ng-model="data_suratkeluar.file_document_edit">{{e}} <span title="remove this tag" class="delete-tag" ng-click="removeFile(e)"></span></span>
+				</span>
+				<span class="progress" ng-show="data_suratkeluar.file_document.progress >= 0 && data_suratkeluar.file_document.length">
+					<div style="width:{{data_suratkeluar.file_document.progress}}%" ng-bind="data_suratkeluar.file_document.progress + '%'"></div>
+				</span>
+				<span ng-show="data_suratkeluar.file_document.result && data_suratkeluar.file_document.length">Upload dokumen berhasil</span>
+				<span class="errorMsg" ng-show="errorMsg">{{errorMsg}}</span>
+			</div>
+			<input type="hidden" name="current_idjenissurat" value="">
+			<input type="hidden" name="current_no_index" value="">
+		</form>
+	</div>
+	<div class="modal-footer" style="border:0;">
+		<button class="btn btn-success" ng-click="save()">Simpan</button>
+		<button class="btn btn-warning" ng-click="$close()">Batal</button>
+	</div>
+</div>

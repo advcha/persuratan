@@ -1,0 +1,35 @@
+<div>
+	<div class="modal-header">
+		<h3 class="modal-title">Laporan</h3>
+	</div>
+	<div class="modal-body modal-laporan" id="print-content">
+		<div class="table-responsive" id="print-laporan">
+			<span class="show-print-not">Ada {{jumlah}} data</span>
+			<table class="table">
+				<caption class="caption-laporan">LAPORAN {{jenissurat}}<br/>{{jenislaporan}}</caption>
+				<tbody class="show-print-only">
+					<tr class="tbl_header">
+						<td class="col-1">NO.</td>
+						<td class="col-2">NO. SURAT</td>
+						<td class="col-3">TANGGAL</td>
+						<td class="col-4">SURAT DARI DAN PERIHAL</td>
+						<td class="col-5">DISPOSISI DAN KETERANGAN</td>
+						<td class="col-6">LAMPIRAN</td>
+					</tr>
+					<tr class="" ng-repeat="r in result">
+						<td class="col-1">{{r.num}}</td>
+						<td class="col-2">{{r.no_surat}}</td>
+						<td class="col-3">Tgl. Surat:<br/>{{r.tgl_surat}}<br/><br/>Tgl. Terima:<br/>{{r.tgl_terima}}</td>
+						<td class="col-4">Surat Dari:<br/>{{r.asal_surat}}<br/><br/>Perihal:<br/>{{r.perihal}}</td>
+						<td class="col-5">Disposisi:<br/>{{r.disposisi}}<br/><br/>Keterangan:<br/>{{r.instruksi}}</td>
+						<td class="col-6">Lampiran:<br/>{{r.lampiran}}<br/><br/>File:<br/>{{r.file_document}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-success" ng-show="jumlah" ng-click="printLaporan()">Print</button>
+		<button class="btn btn-warning" ng-click="$close()">Tutup</button>
+	</div>
+</div>

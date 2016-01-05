@@ -1,0 +1,24 @@
+<section class="container login-form">
+	<section>
+		<form id="formLogin" name="formLogin" role="login" novalidate>
+			<img src="assets/images/logo.png" alt="" class="img-responsive" />
+			<div ng-repeat="alert in alerts" ng-show="alert.show" class="alert-login">
+				<alert type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+			</div>
+			<div class="form-group" show-errors>
+				<input type="text" id="username" name="username" required class="form-control" data-ng-model="loginData.username" placeholder="Masukkan username anda" />
+				<span class="glyphicon glyphicon-user"></span>
+				<span class="help-block" ng-if="formLogin.username.$error.required">Username harus diisi</span>
+			</div>
+			
+			<div class="form-group" show-errors>
+				<input type="password" id="password" name="password" required class="form-control" data-ng-model="loginData.password" placeholder="Masukkan password anda" />
+				<span class="glyphicon glyphicon-lock"></span>
+				<span class="help-block" ng-if="formLogin.password.$error.required">Password harus diisi</span>
+ 			</div>
+			
+			<button type="submit" name="go" data-ng-click="login()" class="btn btn-primary btn-block">Masuk</button>
+			
+		</form>
+	</section>
+</section>

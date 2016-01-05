@@ -1,0 +1,13 @@
+<section class="container grid-form" ng-init="init()">
+	<h3 class="title_grid">DATA SURAT MASUK</h3>
+	<div flash-message="2500" ></div>
+	<section>
+		<div ui-grid="gridOptions" class="suratmasukGrid" id="suratmasuk" ui-grid-pagination ui-grid-save-state  ui-grid-selection></div>
+	</section>
+	<div>
+		<button data-ng-click="addRow()" class="btn btn-primary btn-surat">Tambah Data</button>
+		<button data-ng-click="searchRow()" class="btn btn-primary btn-surat">Cari Data</button>
+		<!--button data-ng-click="printReport()" class="btn btn-primary btn-surat">Print Laporan</button-->
+		<button data-ng-click="refreshRow()" class="btn btn-primary btn-surat">Refresh Data</button>
+	</div>
+</section>

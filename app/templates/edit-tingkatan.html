@@ -1,0 +1,18 @@
+<div>
+	<div class="modal-header">
+		<h3 class="modal-title">{{ title_surat }} Tingkatan</h3>
+	</div>
+	<div class="modal-body">
+		<form id="formTingkatan" name="formTingkatan" role="form" novalidate>
+			<div class="form-group" show-errors>
+				<label for="userlevel">Nama Tingkatan</label>
+				<input type="text" class="form-control" id="userlevel" name="userlevel" required placeholder="Nama tingkatan" ng-model="data_tingkatan.userlevel" maxlength="25" />
+				<span class="help-block" ng-if="formTingkatan.userlevel.$error.required">Nama tingkatan harus diisi</span>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-success" ng-click="save()">Simpan</button>
+		<button class="btn btn-warning" ng-click="$close()">Batal</button>
+	</div>
+</div>

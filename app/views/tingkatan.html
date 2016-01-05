@@ -1,0 +1,12 @@
+<section class="container grid-form" ng-init="init()">
+	<h3 class="title_grid">TINGKATAN PENGGUNA</h3>
+	<div flash-message="1500" ></div>
+	<section>
+		<div ui-grid="gridOptions" class="tingkatanGrid" id="tingkatan" ui-grid-pagination></div>
+	</section>
+	<div>
+		<button data-ng-click="addRow()" class="btn btn-primary btn-surat">Tambah Data</button>
+		<button data-ng-click="searchRow()" class="btn btn-primary btn-surat">Cari Data</button>
+		<button data-ng-click="refreshRow()" class="btn btn-primary btn-surat">Refresh Data</button>
+	</div>
+</section>

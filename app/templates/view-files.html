@@ -1,0 +1,16 @@
+<div>
+	<div class="modal-header">
+		<h3 class="modal-title">Dokumen</h3>
+	</div>
+	<div class="modal-body">
+		<div class="row" style="margin:0;">
+			<div ng-repeat="f in files" class="col-md-3 thumb">
+				<a href="http://persuratan/uploads/{{file_prefix}}_{{f.file}}" target="_blank"><img ng-src="{{f.extension == 'pdf' && 'http://persuratan/assets/images/filetype-icons-pdf.png' || 'http://persuratan/uploads/'+file_prefix+'_'+f.file}}" /></a><br/>
+				<span>{{f.file}}</span>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-warning" ng-click="$close()">Tutup</button>
+	</div>
+</div>

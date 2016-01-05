@@ -1,0 +1,21 @@
+<div>
+	<div class="modal-header">
+		<h3 class="modal-title">Cari Tanggal</h3>
+	</div>
+	<div class="modal-body">
+		<form role="form">
+			<div class="form-group">
+				<label for="tgl_from">Mulai dari</label>
+				<input type="date" class="form-control" id="tgl_from" placeholder="Mulai dari" ng-model="tgl_from" />
+			</div>
+			<div class="form-group">
+				<label for="tgl_to">Sampai dengan</label>
+				<input type="date" class="form-control" id="tgl_to" placeholder="Sampai dengan" ng-model="tgl_to" />
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-success" ng-click="searchDate()">Cari</button>
+		<button class="btn btn-warning" ng-click="$close()">Batal</button>
+	</div>
+</div>

@@ -1,0 +1,42 @@
+<div>
+	<div class="modal-header">
+		<h3 class="modal-title">{{ title_surat }} Pengguna</h3>
+	</div>
+	<div class="modal-body">
+		<form id="formPengguna" name="formPengguna" role="form" novalidate>
+			<div class="form-group" show-errors>
+				<label for="user">Pengguna</label>
+				<input type="text" class="form-control" id="user" name="user" required placeholder="Pengguna/username" ng-model="data_pengguna.user" maxlength="20" />
+				<span class="help-block" ng-if="formPengguna.user.$error.required">Pengguna/username harus diisi</span>
+			</div>
+			<div class="form-group" show-errors>
+				<label for="password">Password {{ password_1 }}</label>
+				<input type="password" class="form-control" id="password" name="password" required placeholder="Password" ng-model="data_pengguna.password" maxlength="50" />
+				<span class="help-block" ng-if="formPengguna.password.$error.required">Password {{ password_1 }}harus diisi</span>
+			</div>
+			<div class="form-group" id="confirm_pass" show-errors>
+				<label for="password2">Password {{ password_2 }}</label>
+				<input type="password" class="form-control" id="password2" name="password2" required placeholder="Password" ng-model="data_pengguna.password2" maxlength="50" />
+				<span class="help-block" ng-if="formPengguna.password2.$error.required">Password {{ password_2 }} harus diisi</span>
+				<span class="help-block" ng-if="formPengguna.password2.$error.wrong">Password {{ password_2 }} harus sama</span>
+			</div>
+			<div class="form-group" show-errors>
+				<label for="nama_lengkap">Nama Lengkap</label>
+				<input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" required placeholder="Nama lengkap pengguna" ng-model="data_pengguna.nama_lengkap" maxlength="50" />
+				<span class="help-block" ng-if="formPengguna.nama_lengkap.$error.required">Nama lengkap pengguna harus diisi</span>
+			</div>
+			<div class="form-group" show-errors>
+				<label for="iduserlevel">Tingkatan</label>
+				<select class="form-control" id="iduserlevel" name="iduserlevel" required ng-model="data_pengguna.iduserlevel">
+					<!--option value="{{userlevels.iduserlevel}}">{{userlevels.userlevel}}</option-->
+					<option ng-repeat="ul in userlevels" value="{{ul.iduserlevel}}">{{ul.userlevel}}</option>
+				</select>
+				<span class="help-block" ng-if="formPengguna.iduserlevel.$error.required">Tingkatan pengguna harus dipilih</span>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-success" ng-click="save()">Simpan</button>
+		<button class="btn btn-warning" ng-click="$close()">Batal</button>
+	</div>
+</div>
